@@ -1,0 +1,17 @@
+.bg-blue{
+    color: lightcoral;
+    border-left: 5px solid red;
+}
+
+.centered-text{
+    text-align: center;
+    cursor: pointer;
+}
+
+.myBacground{
+    background-color: green;
+}
+
+p{
+    line-height: 15px;
+}

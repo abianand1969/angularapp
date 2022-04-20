@@ -1,0 +1,55 @@
+<nav class="navbar navbar-dark navbar-expand-lg bg-primary1 sticky-top" style="opacity: 0.8">
+    <div class="container-fluid">
+        <a href="" class="navbar-brand ms-3">
+            <h4>CG-VAK Store</h4>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto" *ngIf="loginStatus">
+            <li class="nav-item">
+                <a routerLink="/home" class="nav-link active" aria-current="page">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="/products" class="nav-link active" aria-current="page">Products</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/users" class="nav-link active" aria-current="page">Users</a>
+            </li>
+            <li class="nav-item">
+                <a href="/orders" class="nav-link active" aria-current="page">Orders</a>
+            </li>           
+        </ul>
+        <ul class="navbar-nav ms-auto" *ngIf="loginStatus">
+           
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Settings
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" routerLink="/changepassword">Change Password</a></li>
+                  <li><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Other Link</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a routerLink="" (click)="logout()" class="nav-link active" aria-current="page"><i class="bi bi-box-arrow-right"></i> Logout</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ms-auto" *ngIf="!loginStatus">
+            <li class="nav-item">
+                <a routerLink="/login" class="nav-link active" aria-current="page"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/signup" class="nav-link active" aria-current="page"><i class="bi bi-person-plus-fill"></i> SignUp</a>
+            </li>
+            
+        </ul>
+    </div>
+    </div>
+
+</nav>

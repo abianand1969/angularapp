@@ -1,0 +1,5 @@
+<div class="bg-primary rounded-3 d-flex flex-row justify-content-between" style="width: 35%;">
+    <button class="btn btn-primary fw-bold" [disabled]="this.count <=0 ? true: false" (click)="decrement()">-</button>
+    <span class="text-white my-auto">{{count}}</span><span>
+        <button class="btn btn-primary fw-bold" (click)="increment()">+</button></span>
+</div>

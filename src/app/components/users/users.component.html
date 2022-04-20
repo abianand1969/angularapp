@@ -1,0 +1,91 @@
+<app-bootnavbar></app-bootnavbar>
+<router-outlet></router-outlet>
+<div class="row bg-info">
+    <div class="col-md-6">
+        <h5 class="p-2 my-auto">User Dashboard</h5>
+    </div>
+    <div class="col-md-6 text-end">
+        <button type="button" class="btn btn-warning m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add User
+        </button>
+    </div>
+</div>
+<div class="card p-0 m-0 border-0">
+    <div class="card-body">
+        <div class="row mt-2" >
+            <div class="col-md-8 mx-auto">
+               <app-user [user]="user" *ngFor="let user of users"></app-user>
+            </div>
+        </div>
+        <!-- <ng-template #noRecords>
+            <h3 class="ms-3 text-center">Sorry! No records found</h3>
+        </ng-template> -->
+        <p *ngIf="users.length == 0" class="text-center display-6 mt-3">Sorry! No Records Found</p>
+    </div>
+</div>
+
+
+
+
+
+<!-- <table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Contact</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{user.name.firstname}}</td>
+            <td>{{user.name.lastname}}</td>
+            <td class="table-info">{{user.email}}</td>
+            <td>{{user.phone}}</td>
+        </tr>
+    </tbody>
+</table> -->
+
+<!-- </div> -->
+
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New User</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">           
+                    <!-- <form #userForm="ngForm" (ngSubmit)="formSubmit(userForm)" >
+                        <div class="form-group">
+                            <label for="fristname" class="form-label">First Name</label>
+                            <input type="text" id="firstname" name="firstname" [(ngModel)]="user.name.firstname" 
+                            class="form-control" placeholder="first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="form-label"> Last Name</label>
+                            <input type="text" id="lastname" name="lastname" [(ngModel)]="user.name.lastname" 
+                             class="form-control" placeholder="last name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" [(ngModel)]="user.email" 
+                            class="form-control" placeholder="email" required>
+                        </div> 
+                    </form> -->
+                    <app-adduser (addUser)="addUser($event)"></app-adduser>
+                  
+                </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <!-- <button class="btn btn-primary btn-block"  [disabled]="!userForm.form.valid" type="submit">Add User</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+

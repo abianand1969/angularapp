@@ -1,0 +1,21 @@
+<div class="card card-body border border-2 border-info rounded-3 mb-3">
+    <div class="row">
+        <div class="col-md-4 my-auto text-center">
+            <img [src]="user.image" class="rounded-circle img-fluid" alt="No Image" width="150" height="150">
+        </div>
+        <div class="col-md-8">
+            <h3>{{user.name.firstname | uppercase}} {{user.name.lastname | uppercase}} <span>
+                <small><button class="btn btn-primary btn-sm ms-3" (click)="setShowExtended()"><i [class]="!showextended ? 'fa fa-plus':'fa fa-minus'"></i></button></small>
+            </span></h3>
+            <div *ngIf="showextended">
+            <p class="h6 text-info fw-bold">Address</p>
+            <p>{{user.address.number}}, {{user.address.street}}, {{user.address.city}}, {{user.address.zipcode}}</p>
+            <p ><i class="fa-solid fa-envelope text-info"></i> {{user.email}}</p>
+            <p ><i class="fa-solid fa-phone text-info"></i> {{user.phone}}</p>
+        </div>
+            <button class="btn btn-info btn-sm me-2">Invite</button>
+            <a routerLink="/users/edit/{{user.id}}" class="btn btn-info btn-sm me-2" >Edit</a>
+            <button class="btn btn-info btn-sm">Delete</button>
+        </div>                
+    </div>
+</div>

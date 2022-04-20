@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-md-6 mx-auto">      
+
+        <form [formGroup]="productForm" (ngSubmit)="submitHandler()">
+            <div class="form-group">
+                <label for="id" class="form-label"></label>
+                <input type="text" id="id" name="id" class="form-control"  formControlName="id" placeholder="id">
+            </div>
+            <div class="form-group">
+                <label for="title" class="form-label"></label>
+                <input type="text" id="title" name="title" class="form-control" formControlName="title" placeholder="title">
+            </div>
+            <div class="form-group">
+                <label for="description" class="form-label"></label>
+                <input type="text" id="description" name="description" class="form-control" formControlName="description" placeholder="description">
+            </div>
+            <h3>Ratings</h3>
+            <div formGroupName="rating">   
+                <span> <button class="button btn btn-info" (click)="reduceRating()">-</button>
+                    <button class="button btn btn-info" (click)="increaseRating()">+</button></span>           
+                <div class="form-group">
+                    <label for="rate" class="form-label"></label>
+                    <div>
+                    <input type="text" id="rate" name="rate" class="form-control" formControlName="rate" placeholder="rate">
+                    
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <label for="count" class="form-label"></label>
+                    <input type="text" id="count" name="count" class="form-control" formControlName="count" placeholder="count">
+                </div>               
+            </div>
+            <div formArrayName="others" class="mt-2">
+                <h3>Other Address Line</h3>
+                <button type="button" class="btn btn-success" (click)="addOthers()">+ Add another Line</button>
+
+                <div *ngFor="let alias of others.controls; let i=index" class="mt-2">
+                    <!-- The repeated other controls template -->
+                    <label class="form-label" for="others-{{ i }}">Address Line {{i+1}} </label>
+                    <input class="form-control" id="others-{{ i }}" type="text" [formControlName]="i">
+                </div>
+            </div>
+            <div class="mt-3 text-center">
+                <button class="btn btn-primary" type="submit" [disabled]="!productForm.valid">Add Product</button>
+            </div>    
+        </form>
+        <div>{{productForm.value.id}} {{productForm.value.title}} {{productForm.value.description}}</div>
+        <div>{{productForm.value.rating.rate}} {{productForm.value.rating.count}}</div>
+    </div>
+</div>

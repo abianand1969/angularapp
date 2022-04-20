@@ -1,0 +1,63 @@
+<app-bootnavbar></app-bootnavbar>
+<app-addproduct></app-addproduct>
+<div class="m-3">
+    <div class="row" *ngIf="products.length > 0; else noRecords">
+        <div class="col-sm-2 p-0">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center" 
+                    *ngFor="let product of products">
+                    <!-- routerLink="/products/{{product.id}}" -->
+                    <a [routerLink]="['/products', product.id]" [queryParams]="{category: 'electronics'}" >
+                        <img [src]="product.image" alt="" 
+                        width="100" height="100"> <span class="badge bg-primary rounded-pill">
+                            {{product.price | currency: "USD"}}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-8">
+            <app-product [productIn]="product" *ngFor="let product of products" ></app-product>
+        </div>
+        <div class="col-sm-2 p-0">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center " *ngFor="let product of products">
+                    <!-- <div class="col  mx-auto text-center">
+                       
+                    </div> -->
+                    <img [src]="product.image" alt="" width="100" height="100"> <span class="badge bg-primary rounded-pill">{{product.price | currency: "USD"}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+   
+
+
+<!-- <ul>
+    <li class="card card-body mb-2" *ngFor="let product of products" >
+        <div class="row">
+            <div class="col-md-4">
+                <img style="cursor: pointer;" (click)="setShowExtended()" [src]="product.image" width="200" height="200" alt="">
+            </div>
+            <div class="col-md-8" >
+                <h3 [ngStyle]="currentStyles" (click)="setShowExtended()">{{product.title | uppercase}} </h3>
+                <div *ngIf="showextended">
+                <p>
+                    {{product.description}}
+                </p>
+                <p>
+                    {{product.price | currency : "USD"}}
+                </p>
+                <p>{{product.promotionDate | date}}</p>
+            </div>
+            </div>
+        </div>   
+    </li>
+</ul> -->
+
+<!-- <p class="display-6 text-danger text-center mt-4" *ngIf="products.length == 0">Sorry! No Records Found</p> -->
+
+<ng-template #noRecords>
+    <p class="text-center mt-4 text-danger display-6">Sorry! No records found</p>
+</ng-template>
+</div>

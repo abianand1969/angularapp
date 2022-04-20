@@ -1,0 +1,53 @@
+<!-- single class binging -->
+<!-- <li class="card card-body mb-2" [class.bg-light]="singleproduct.promotion" [class.border-danger]="singleproduct.promotion"></li> -->
+
+<!-- mulitiple class binding -->
+<!-- <li class="card card-body mb-2" [class]="['bg-light', 'border-2', 'border-primary']" ></li> -->
+<!-- <li class="card card-body mb-2" [class]="'bg-light border-3 border-info'" ></li> -->
+<!-- <li class="card card-body mb-2" [class]="{'bg-light': singleproduct.promotion, 'border-info': singleproduct.promotion}" ></li> -->
+<!-- <li class="card card-body mb-2" [ngClass]="customClasses" ></li> -->
+
+<!-- single style binding -->
+<!-- <li class="card card-body mb-2" [style.background]="'red'" ></li> -->
+<!-- <li class="card card-body mb-2" [style.background]="singleproduct.promotion ? 'red': 'blue'" ></li> -->
+
+<!-- multiple style binding -->
+<!-- <li class="card card-body mb-2" [style]="{background: 'grey', border: '3px solid red'}" ></li> -->
+<!-- <li class="card card-body mb-2" [style]="{'padding-top': singleproduct.price > 10  ? '0' : '40px',
+    'color': singleproduct.price > 10 ? 'green' : 'red'
+  }" > -->
+
+<!-- <ul> -->
+<div class="card card-body mb-2 m-0" [style]="{border: '2px solid lightblue'}">
+    <div class="row m-0">
+        <div class="col-md-4 my-auto text-center">
+            <img style="cursor: pointer;" (click)="setShowExtended()" [src]="singleproduct.image" width="200"
+                height="200" alt="">
+        </div>
+        <div class="col-md-8">
+            <button class="btn btn-primary" (click)="setShowExtended()"><i
+                    [class]="!showextended ? 'fa fa-plus':'fa fa-minus'"></i></button>
+            <h3 [ngStyle]="currentStyles">{{singleproduct.title | uppercase}} </h3>
+            <div *ngIf="showextended">
+                <p>
+                    {{singleproduct.description}}
+                </p>
+                <p>
+                    {{singleproduct.price | currency : "USD"}}
+                </p>
+            </div>
+            
+                <app-counter [count]=0 (countChange)="updateCount($event)"></app-counter>
+            
+            <div class="mt-2 mb-3 text-dark display-1">
+                {{itemCount}}
+            </div>
+            
+            <div class="d-flex mt-2">                         
+                <button class="btn btn-primary me-2" type="button" (click)="addToCart(singleproduct)">Add to Cart</button>
+                <button class="btn btn-primary" type="button">Buy</button>
+            </div>           
+        </div>
+    </div>
+</div>
+<!-- </ul> -->
